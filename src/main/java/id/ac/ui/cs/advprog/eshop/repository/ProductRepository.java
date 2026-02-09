@@ -33,7 +33,18 @@ public class ProductRepository {
         return null;
     }
 
+    public Product editProduct(Product productBaru) {
+        Product productLama = findWithId(productBaru.getProductId());
+        if (productLama != null) {
+            productLama.setProductName(productBaru.getProductName());
+            productLama.setProductQuantity(productBaru.getProductQuantity());
+            return productLama;
+        }
+        return null;
+    }
+
     public void deleteProduct(String id) {
         productData.removeIf(product -> product.getProductId().equals(id));
     }
+
 }
