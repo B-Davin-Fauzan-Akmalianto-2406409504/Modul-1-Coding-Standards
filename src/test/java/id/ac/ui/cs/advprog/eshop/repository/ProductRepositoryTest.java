@@ -60,4 +60,65 @@ class ProductRepositoryTest {
         assertEquals(product2.getProductId(), savedProduct.getProductId());
         assertFalse(productIterator.hasNext());
     }
+
+    @Test
+    void testEditProductSuccess() {
+        String idProduct = "0001";
+        Product productLama = new Product();
+        productLama.setProductId(idProduct);
+        productLama.setProductName("Basket");
+        productLama.setProductQuantity(10);
+        productRepository.create(productLama);
+
+        Product productBaru = new Product();
+        productBaru.setProductId(idProduct);
+        productBaru.setProductName("Basketball");
+        productBaru.setProductQuantity(1000);
+
+        Product hasil = productRepository.editProduct(productBaru);
+        assertEquals(productLama, hasil);
+        assertEquals("Basketball", productLama.getProductName());
+        assertEquals(1000, productLama.getProductQuantity());
+    }
+
+    @Test
+    void testEditProductFail() {
+        Product productLama = new Product();
+        productLama.setProductId("00001");
+        productLama.setProductName("Basket");
+        productLama.setProductQuantity(10);
+        productRepository.create(productLama);
+
+        Product productGaib = new Product();
+        productGaib.setProductId("001");
+        productGaib.setProductName("Basketball");
+        productGaib.setProductQuantity(1000);
+
+        Product hasil = productRepository.editProduct(productGaib);
+        assertNull(hasil);
+        assertEquals("Basket", productLama.getProductName());
+        assertEquals(10, productLama.getProductQuantity());
+    }
+
+    @Test
+    void testDeleteProductSuccess() {
+        Product productLama = new Product();
+        productLama.setProductName("Basket");
+        productLama.setProductQuantity(10);
+        productRepository.create(productLama);
+
+        assertTrue(productRepository.deleteProduct(productLama.getProductId()));
+    }
+
+    @Test
+    void testDeleteProductFail() {
+        Product productLama = new Product();
+        productLama.setProductId("001");
+        productLama.setProductName("Basket");
+        productLama.setProductQuantity(10);
+        productRepository.create(productLama);
+
+        assertFalse(productRepository.deleteProduct("01"));
+    }
+
 }
