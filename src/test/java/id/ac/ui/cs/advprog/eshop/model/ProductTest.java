@@ -27,6 +27,7 @@ public class ProductTest {
 
     @Test
     void testGetProductQuantity() {
-        assertEquals( 100, this.product.getProductQuantity());
+        assertEquals(100, this.product.getProductQuantity());
     }
+
 }
