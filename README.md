@@ -10,4 +10,4 @@
 
 # Reflection -- Module 2
 - Saya memperbaiki warning yang berlabel Blocker, hal itu terjadi karna dalam EshopApplicationTests saya sebelumnya, saya hanya menjalankan fungsi main() saja tanpa menyertakan assertion apapun, sehingga SonarQube mendeteksi code smell dan setelah saya menambahkan assertion, warningnya pun hilang.
-- Menurut saya sudah, karena file ci.yml, scorecard.yml, dan sonarcloud.yml sudah mewakili bagian CI dengan mengetes dan memindai kode, sedangkan deploy.yml sudah mewakili CD. 
+- Menurut saya sudah, karena file ci.yml, scorecard.yml, dan sonarcloud.yml sudah mewakili bagian CI dengan mengetes dan memindai kode. Sementara itu, di dalam file deploy.yml ada bagian yang mengeksekusi deployment ke Heroku. Jadi, definisi CI dan CD sudah terpenuhi disini.   
