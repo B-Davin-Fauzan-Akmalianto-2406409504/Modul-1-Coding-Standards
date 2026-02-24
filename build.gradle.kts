@@ -85,3 +85,7 @@ sonar {
         property("sonar.organization", "b-davin-fauzan-akmalianto-2406409504")
     }
 }
+
+tasks.named<Jar>("jar") {
+    enabled = false
+}
