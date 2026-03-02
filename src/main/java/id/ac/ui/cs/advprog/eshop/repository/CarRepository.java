@@ -34,12 +34,15 @@ public class CarRepository {
         return null;
     }
 
-    public Car update(Car carBaru) {
-        Car carLama = findById(carBaru.getCarId());
-        if (carLama != null) {
-            carLama.setCarName(carBaru.getCarName());
-            carLama.setCarQuantity(carBaru.getCarQuantity());
-            return carLama;
+    public Car update(String id, Car carBaru) {
+        for (int i = 0; i < carData.size(); i++) {
+            Car car = carData.get(i);
+            if (car.getCarId().equals(id)) {
+                car.setCarName(carBaru.getCarName());
+                car.setCarColor(carBaru.getCarColor());
+                car.setCarQuantity(carBaru.getCarQuantity());
+                return car;
+            }
         }
         return null;
     }
