@@ -1,4 +1,13 @@
 package id.ac.ui.cs.advprog.eshop.service;
 
-public class CarService {
+import id.ac.ui.cs.advprog.eshop.model.Car;
+
+import java.util.List;
+
+public interface CarService {
+    public Car create(Car car);
+    public List<Car> findAll();
+    public Car findById(String carId);
+    public void update(String carId, Car carBaru);
+    public void deleteCarById(String id);
 }
