@@ -11,3 +11,15 @@
 # Reflection -- Module 2
 - Saya memperbaiki warning yang berlabel Blocker, hal itu terjadi karna dalam EshopApplicationTests saya sebelumnya, saya hanya menjalankan fungsi main() saja tanpa menyertakan assertion apapun, sehingga SonarQube mendeteksi code smell dan setelah saya menambahkan assertion, warningnya pun hilang.
 - Menurut saya sudah, karena file ci.yml, scorecard.yml, dan sonarcloud.yml sudah mewakili bagian CI dengan mengetes dan memindai kode. Sementara itu, di dalam file deploy.yml ada bagian yang mengeksekusi deployment ke Heroku. Jadi, definisi CI dan CD sudah terpenuhi disini.   
+
+# Reflection -- Module 3
+## SRP -- Single Responsibility Principle
+- Sebuah principle yang mengatakan bahwa suatu class itu seharusnya mempunyai satu (sedikit) tanggung jawab yang spesifik, agar programmer tidak bingung dan pusing ketika membaca code. Disini, saya memisahkan CarController dari ProductController.java karena yang mereka lakukan sangat berbeda dan tidak ada hubungannya.
+## OCP -- Open Closed Principle
+- Sebuah principle yang mengatakan bahwa suatu kode itu seharusnya terbuka terhadap extension, namun tertutup terhadap modifikasi. Disini, saya membuat CarRepositoryInterface, agar jika suatu saat ingin ditambahkan fitur dimana repo terhubung ke database, tinggal mengimplement interface ini dan mengoverride fungsi fungsinya di file yang separate.
+## LSP -- Liskov Substitution Principle
+- Sebuah principle yang mengatakan bahwa suatu subclass harus dapat menggantikan peran superclassnya dimanapun itu. Disini, saya tidak secara eksplisit menerapkannya, namun dengan dipisahnya CarController dari yang tadinya meng-extend ProductController (padahal CarController tidak mungkin bisa mengsubstitute ProductController) saya kira itu sudah cukup menggambarkan.
+## ISP -- Interface Segregation Principle
+- Sebuah principle yang mengatakan bahwa jangan menggunakan satu interface besar, namun gunakanlah interface masing-masing dengan skala yang lebih kecil supaya tidak ada fungsi redundant yang diimplementasikan di class yang tidak membutuhkannya. Disini, CarRepositoryInterface sudah terpisah dengan yang produk sehingga Car tidak perlu mengimplement fungsi Product, dan juga sebaliknya.
+## DIP -- Dependency Inversion Principle
+- Sebuah principle yang mengatakan bahwa intinya modul Service tidak boleh bergantung ke Repository, melainkan harus bergantung ke Interface aja, agar ketika ingin ganti repo, Service tidak rusak dan perlu diganti. Disini, CarServiceImpl sudah depend ke CarRepositoryInterface.
