@@ -28,9 +28,6 @@ class ProductControllerTest {
     @MockitoBean
     private ProductService service;
 
-    @MockitoBean
-    private CarService carService;
-
     private Product product;
 
     @BeforeEach
